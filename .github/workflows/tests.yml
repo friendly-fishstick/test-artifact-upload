@@ -1,0 +1,18 @@
+on:
+  workflow_dispatch
+
+jobs:
+  run-tests-artifact:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      - name: zip the artifact
+        run: tar -zcvf /tmp/theartifact.tgz ./ && mv /tmp/theartifact.tgz ./
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: theartifact
+          path: theartifact.tgz
+      - name: Delay the workflow
+        run: sleep 5m
