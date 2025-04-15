@@ -8,7 +8,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
         with:
-          my-token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
       - name: zip the artifact
         run: tar -zcvf /tmp/theartifact.tgz ./ && mv /tmp/theartifact.tgz ./
       - name: Upload the artifact
